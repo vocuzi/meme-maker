@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Meme Maker : Fast and Lightweight</title>
+		<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js" integrity="sha256-y9xVOgmBqPHwdnAHyi5OTSACwsNHlHx+IVI5HVVHfQM=" crossorigin="anonymous"></script>
+		<style type="text/css">
+			body {
+				margin: 0;
+				font-family: 'Bebas Neue';
+				text-align: center;
+				background-color: #2f2f2f;
+				user-select: none;
+			}
+			h1 {
+				font-weight: lighter;
+				font-size: 90px;
+				background: linear-gradient(to right, #a130d0 0%, #2196F3 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			h2 {
+				font-size: 40px; font-weight: lighter; margin-top: 10px;
+			}
+			font {display: block; font-size: 20px; margin-top: 20px; margin-bottom: 3px;}
+			font a {text-decoration: none; color: limegreen;}
+			pre {font-family: Arial; margin: 0;}
+			input {font-size: 20px;}
+			textarea {font-size: 20px; font-family: Arial; width: 358px; resize: vertical; max-height: 250px;}
+			#meme, #maker {display: inline-block; width: 400px; vertical-align: top; margin: 5px;}
+			#maker {background-color: white; text-align: left; padding: 10px 20px 20px 20px; width: 360px;}
+			.meme-text {font-family: Arial; text-align: left; background-color: white; padding: 10px; font-size: 20px; display: block; width: calc(100% - 20px); border: 0px; resize: vertical;}
+			.meme-image {}
+			.button {display: inline-block; padding: 15px; color: white; border: 3px solid white; width: 320px; font-size: 25px; background-color: rgba(255,255,255,0.1); cursor: pointer; margin: 20px 5px;}
+			
+			.download #generate-meme {display: none;}
+			.download #refresh, .download #download-meme {display: inline-block;}
+			#refresh, #download-meme {display: none;}
+		</style>
+	</head>
+	<body>
+		<h1>MEME MAKER</h1>
+		<div id="maker">
+			<h2>The Good Stuff</h2>
+			<font>MEME TEXT : </font>
+			<textarea id="meme-text"></textarea>
+			<font>MEME IMAGE : </font>
+			<input type="file" id="meme-image" accept="image/x-png,image/gif,image/jpeg">
+		</div>
+		<div id="meme">
+			<div class="meme-text"><pre></pre></div>
+			<div class="meme-image">
+				<img src="" width="100%">
+			</div>
+		</div><br><br>
+		<a class="button" id="generate-meme">Generate Meme</a>
+		<a class="button" id="refresh" href="?reload=True">Generate New Meme</a>
+		<a class="button" id="download-meme" download="meme.jpg" href="">Download Meme</a>
+		<font style="color: white;">FOSS. MADE BY <a href="https://github.com/vocuzi" target="_blank">VOCUZI</a></font>
+	</body>
+	<script type="text/javascript">
+		function generateScreenshot(){
+			html2canvas(document.getElementById('meme'),{
+				scale: window.devicePixelRatio,
+				logging: true,
+				profile: true,
+				useCORS: false}).then(function(canvas){
+					const data = canvas.toDataURL('image/jpeg',0.9);
+					const src = encodeURI(data);
+					document.getElementById("download-meme").setAttribute("href",src);
+					document.querySelector("body").setAttribute("class","download");
+				});
+		}
+		function getBaseUrl(){
+		    var file = document.querySelector('input[type=file]')['files'][0];
+		    var reader = new FileReader();
+		    reader.onloadend = function(){
+		        document.querySelector(".meme-image img").src = reader.result;
+		    };
+		    reader.readAsDataURL(file);
+		}
+		function getBaseText(){
+			document.querySelector(".meme-text pre").innerHTML = document.querySelector("textarea").value
+		}
+		document.getElementById("meme-image").addEventListener("change",getBaseUrl);
+		document.getElementById("meme-text").addEventListener("input",getBaseText);
+		document.getElementById("generate-meme").addEventListener("click",generateScreenshot);
+	</script>
+</html>
