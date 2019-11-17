@@ -42,6 +42,7 @@ function getBaseUrl() {
 
 function getBaseText() {
 	document.querySelector(".meme-text pre").innerHTML = document.querySelector("textarea").value
+	generateScreenshot()
 }
 
 window.onload = init()
