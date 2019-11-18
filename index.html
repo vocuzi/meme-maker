@@ -38,52 +38,24 @@
 			#refresh, #download-meme {display: none;}
 		</style>
 	</head>
-	<body>
+	<body class="download">
 		<h1>MEME MAKER</h1>
 		<div id="maker">
 			<h2>The Good Stuff</h2>
 			<font>MEME TEXT : </font>
-			<textarea id="meme-text"></textarea>
+			<textarea id="meme-text">No Brain, No Stress</textarea>
 			<font>MEME IMAGE : </font>
 			<input type="file" id="meme-image" accept="image/x-png,image/gif,image/jpeg">
 		</div>
 		<div id="meme">
 			<div class="meme-text"><pre></pre></div>
 			<div class="meme-image">
-				<img src="" width="100%">
+				<img src="default.jpg" width="100%">
 			</div>
 		</div><br><br>
-		<a class="button" id="generate-meme">Generate Meme</a>
-		<a class="button" id="refresh" href="?reload=True">Generate New Meme</a>
 		<a class="button" id="download-meme" download="meme.jpg" href="">Download Meme</a>
-		<font style="color: white;">FOSS. MADE BY <a href="https://github.com/vocuzi" target="_blank">VOCUZI</a></font>
+		<font style="color: white;">MADE BY <a href="https://github.com/vocuzi" target="_blank">VOCUZI</a></font>
 	</body>
-	<script type="text/javascript">
-		function generateScreenshot(){
-			html2canvas(document.getElementById('meme'),{
-				scale: window.devicePixelRatio,
-				logging: true,
-				profile: true,
-				useCORS: false}).then(function(canvas){
-					const data = canvas.toDataURL('image/jpeg',0.9);
-					const src = encodeURI(data);
-					document.getElementById("download-meme").setAttribute("href",src);
-					document.querySelector("body").setAttribute("class","download");
-				});
-		}
-		function getBaseUrl(){
-		    var file = document.querySelector('input[type=file]')['files'][0];
-		    var reader = new FileReader();
-		    reader.onloadend = function(){
-		        document.querySelector(".meme-image img").src = reader.result;
-		    };
-		    reader.readAsDataURL(file);
-		}
-		function getBaseText(){
-			document.querySelector(".meme-text pre").innerHTML = document.querySelector("textarea").value
-		}
-		document.getElementById("meme-image").addEventListener("change",getBaseUrl);
-		document.getElementById("meme-text").addEventListener("input",getBaseText);
-		document.getElementById("generate-meme").addEventListener("click",generateScreenshot);
-	</script>
+	<script type="text/javascript" src="https://unpkg.com/htmlshot@1.0.1/index.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </html>
