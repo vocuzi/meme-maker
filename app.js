@@ -48,4 +48,4 @@ function getBaseText() {
 
 window.onload = init()
 document.getElementById("meme-image").addEventListener("change", getBaseUrl);
-document.getElementById("meme-text").addEventListener("change", getBaseText);
+document.getElementById("meme-text").addEventListener("mouseout", getBaseText);
