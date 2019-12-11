@@ -35,6 +35,7 @@ function getBaseUrl() {
 	var reader = new FileReader();
 	reader.onloadend = function() {
 		document.querySelector(".meme-image img").src = reader.result;
+		getBaseText(); // refresh text
 		generateScreenshot() // auto generates on image change
 	};
 	reader.readAsDataURL(file);
