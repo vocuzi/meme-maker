@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Meme Maker : Fast and Lightweight</title>
+		<title>Meme Maker : Easy, Fast and Lightweight</title>
+		<meta name="title" content="Meme Maker : Easy, Fast and Lightweight">
+		<meta name="description" content="This is an easy to use fast and lightweight Meme maker, generate one click modern memes. Generate modern meme template with this tool. An ad-free experience.">
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://metatags.io/">
+		<meta property="og:title" content="Meme Maker : Easy, Fast and Lightweight">
+		<meta property="og:description" content="This is an easy to use fast and lightweight Meme maker, generate one click modern memes. Generate modern meme template with this tool. An ad-free experience.">
+		<meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://metatags.io/">
+		<meta property="twitter:title" content="Meme Maker : Easy, Fast and Lightweight">
+		<meta property="twitter:description" content="This is an easy to use fast and lightweight Meme maker, generate one click modern memes. Generate modern meme template with this tool. An ad-free experience.">
+		<meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+		
+		<meta name="theme-color" content="#2f2f2f">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js" integrity="sha256-y9xVOgmBqPHwdnAHyi5OTSACwsNHlHx+IVI5HVVHfQM=" crossorigin="anonymous"></script>
+
 		<style type="text/css">
-			body {
-				margin: 0;
-				font-family: 'Bebas Neue';
-				text-align: center;
-				background-color: #2f2f2f;
-				user-select: none;
+			body {margin: 0; box-sizing: border-box; font-family: 'Bebas Neue',sans-serif; text-align: center;background-color: #2f2f2f;user-select: none;}
+			body > div {}
+			pre {margin: 0px;font-family: 'Arial',sans-serif; padding: 5px; font-size: 18px; white-space: pre-wrap; word-break: keep-all;}
+			img {display: block;}
+			h1, h2, h3 {font-weight: lighter;}
+			h1 {font-size: 3.5em; background: linear-gradient(to right, #a130d0 0%, #2196F3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 25px 0;}
+			h3 {font-size: 2em; margin: 5px 0 10px 0;}
+			font {font-size: 1.4em; margin-top: 10px; display: block;}
+			input, textarea {font-family: 'Open Sans',sans-serif; font-size: 1.2em; box-sizing: border-box; width: 100%;}
+			textarea {height: 120px; resize: none;}
+			#maker {text-align: left; background-color: #fdfdfd; margin: 15px 10px; padding: 10px 0px;}
+			#maker > div {padding: 10px;}
+			#meme {background-color: white; margin: 15px 10px}
+			#meme > div {padding: 1px;}
+			#meme .meme-text {text-align: left;}
+			.button {display: block; color: white; text-decoration: none; font-size: 1.7em; margin: 25px 10px 15px 10px; cursor: pointer;}
+			.button > div {padding: 10px 15px; border: 3px solid white; background-color: rgba(255,255,255,0.1);}
+			#credits {margin: 10px; color: white; font-weight: lighter; font-size: 20px; padding: 10px 0;}
+			#credits a {color: limegreen; text-decoration: none; margin: 0 5px;}
+			@media only screen and (min-width: 768px) {
+				h1 {font-size: 4.5em;}
+				#meme, #maker {max-width: 360px; display: inline-block; vertical-align: top;}
+				.button {max-width: 360px; margin: 25px auto 5px auto;}
 			}
-			h1 {
-				font-weight: lighter;
-				font-size: 90px;
-				background: linear-gradient(to right, #a130d0 0%, #2196F3 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-			}
-			h2 {
-				font-size: 40px; font-weight: lighter; margin-top: 10px;
-			}
-			font {display: block; font-size: 20px; margin-top: 20px; margin-bottom: 3px;}
-			font a {text-decoration: none; color: limegreen; margin: 0px 5px;}
-			pre {font-family: Arial; margin: 0;}
-			input {font-size: 20px;}
-			textarea {font-size: 20px; font-family: Arial; width: 358px; resize: vertical; max-height: 250px;}
-			#meme, #maker {display: inline-block; width: 400px; vertical-align: top; margin: 5px;}
-			#maker {background-color: white; text-align: left; padding: 10px 20px 20px 20px; width: 360px;}
-			.meme-text {font-family: Arial; text-align: left; background-color: white; padding: 10px; font-size: 20px; display: block; width: calc(100% - 20px); border: 0px; resize: vertical;}
-			.meme-image {}
-			.button {display: inline-block; padding: 15px; color: white; border: 3px solid white; width: 320px; font-size: 25px; background-color: rgba(255,255,255,0.1); cursor: pointer; margin: 20px 5px;}
-			
-			.download #generate-meme {display: none;}
-			.download #refresh, .download #download-meme {display: inline-block;}
-			#refresh, #download-meme {display: none;}
 		</style>
 	</head>
-	<body class="download">
-		<h1>MEME MAKER</h1>
-		<div id="maker">
-			<h2>The Good Stuff</h2>
-			<font>MEME TEXT : </font>
-			<textarea id="meme-text">No Brain, No Stress</textarea>
-			<font>MEME IMAGE : </font>
-			<input type="file" id="meme-image" accept="image/x-png,image/gif,image/jpeg">
-		</div>
-		<div id="meme">
-			<div class="meme-text"><pre></pre></div>
-			<div class="meme-image">
-				<img src="default.jpg" width="100%">
+	<body>
+		<div>
+			<h1>MEME MAKER</h1>
+			<div id="maker">
+				<div>
+					<h3>The Good Stuff</h3>
+					<font>MEME TEXT : </font>
+					<textarea id="meme-text">No Brain, No Stress</textarea>
+					<font>MEME IMAGE : </font>
+					<input type="file" id="meme-image" accept="image/x-png,image/gif,image/jpeg">
+				</div>
 			</div>
-		</div><br><br>
-		<a class="button" id="download-meme" download="meme.jpg" href="">Download Meme</a>
-		<font style="color: white;">MADE BY <a href="https://github.com/vocuzi" target="_blank">VOCUZI</a><a href="https://github.com/praveenyadv" target="_blank">PRAVEENYADV</a></font>
+			<div id="meme">
+				<div>
+					<div class="meme-text"><pre></pre></div>
+					<div class="meme-image">
+						<img src="default.jpg" width="100%">
+					</div>
+				</div>
+			</div>
+			<a class="button" id="download-meme" download="meme.jpg" href=""><div>Download Meme</div></a>
+			<div id="credits">
+				Made by <a href="https://github.com/vocuzi" target="_blank">VOCUZI</a>&<a href="https://github.com/praveenyadv" target="_blank">PRAVEENYADV</a>
+			</div>
+		</div>
 	</body>
 	<script type="text/javascript" src="https://unpkg.com/htmlshot@1.0.1/index.js"></script>
 	<script type="text/javascript" src="app.js"></script>
