@@ -1,6 +1,6 @@
 ## MeMe mAkEr
 
-Ready to use [here](https://vocuzi.github.io/meme-maker/).
+Ready to use [here](http://meme.vocuzi.in/).
 
 This meme-maker is : 
 
