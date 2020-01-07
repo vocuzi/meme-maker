@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>Meme Maker : Easy, Fast and Lightweight</title>
 		<meta name="title" content="Meme Maker : Easy, Fast and Lightweight">
@@ -19,6 +19,9 @@
 		
 		<meta name="theme-color" content="#2f2f2f">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="canonical" href="https://meme.vocuzi.in/" />
+		<link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+		<link rel='manifest' href='/manifest.webmanifest'>
 		<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js" integrity="sha256-y9xVOgmBqPHwdnAHyi5OTSACwsNHlHx+IVI5HVVHfQM=" crossorigin="anonymous"></script>
 
@@ -30,7 +33,7 @@
 			h1, h2, h3 {font-weight: lighter;}
 			h1 {font-size: 3.5em; background: linear-gradient(to right, #a130d0 0%, #2196F3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 25px 0;}
 			h3 {font-size: 2em; margin: 5px 0 10px 0;}
-			font {font-size: 1.4em; margin-top: 10px; display: block;}
+			label {font-size: 1.4em; margin-top: 10px; display: block;}
 			input, textarea {font-family: 'Open Sans',sans-serif; font-size: 1.2em; box-sizing: border-box; width: 100%;}
 			textarea {height: 120px; resize: none;}
 			#maker {text-align: left; background-color: #fdfdfd; margin: 15px 10px; padding: 10px 0px;}
@@ -55,26 +58,42 @@
 			<div id="maker">
 				<div>
 					<h3>The Good Stuff</h3>
-					<font>MEME TEXT : </font>
-					<textarea id="meme-text">No Brain, No Stress</textarea>
-					<font>MEME IMAGE : </font>
-					<input type="file" id="meme-image" accept="image/x-png,image/gif,image/jpeg">
+					<!-- <font>MEME TEXT : </font> -->
+					<label for="meme-text">MEME TEXT : </label>
+					<textarea id="meme-text" name="meme-text">No Brain, No Stress</textarea>
+					<label for="meme-image">MEME IMAGE : </label>
+					<input type="file" name="meme-image" id="meme-image" accept="image/x-png,image/gif,image/jpeg">
 				</div>
 			</div>
 			<div id="meme">
 				<div>
 					<div class="meme-text"><pre></pre></div>
 					<div class="meme-image">
-						<img src="default.jpg" width="100%">
+						<img src="/default.jpg" width="100%" alt="Meme Template">
 					</div>
 				</div>
 			</div>
 			<a class="button" id="download-meme" download="meme.jpg" href=""><div>Download Meme</div></a>
 			<div id="credits">
-				Made by <a href="https://github.com/vocuzi" target="_blank">VOCUZI</a>&<a href="https://github.com/praveenyadv" target="_blank">PRAVEENYADV</a>
+				Made by <a href="https://github.com/vocuzi" target="_blank" rel="noreferrer">VOCUZI</a>&<a href="https://github.com/praveenyadv" rel="noreferrer" target="_blank">PRAVEENYADV</a>
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="https://unpkg.com/htmlshot@1.0.1/index.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/htmlshot@1.0.1/index.js" async></script>
+	<script type="text/javascript" src="app.js" async></script>
+	<script type="text/javascript">
+		if ("serviceWorker" in navigator) {
+		  if (navigator.serviceWorker.controller) {
+		    console.log("[PWA Builder] active service worker found, no need to register");
+		  } else {
+		    navigator.serviceWorker
+		      .register("pwabuilder-sw.js", {
+		        scope: "./"
+		      })
+		      .then(function (reg) {
+		        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+		      });
+		  }
+		}
+	</script>
 </html>
